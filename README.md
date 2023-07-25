@@ -1,66 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel ロールと権限のテストプロジェクト
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+これは、AdminLTE と Spatie/Laravel-Permission パッケージを使用して、ロールと権限をテストするためにセットアップされた Laravel プロジェクトです。
 
-## About Laravel
+## 前提条件
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+プロジェクトをクローンして実行する前に、以下があなたのマシンにインストールされていることを確認してください：
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP（バージョン 8.1 以上）
+- Composer
+- Node.js（npm を含む）
+- MySQL または他のサポートされているデータベース
+- Git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## スタートガイド
 
-## Learning Laravel
+以下の手順に従って、プロジェクトをローカルにクローンしてセットアップしてください：
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. リポジトリをクローンする：
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/looreypun/laravel-role-permission.git
+cd laravel-role-permission
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. 依存関係をインストールする：
 
-## Laravel Sponsors
+```bash
+composer install
+npm install && npm run build
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. `.env` ファイルを作成する：
 
-### Premium Partners
+```bash
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4. アプリケーションキーを生成する：
 
-## Contributing
+```bash
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. データベースのマイグレーションを実行し、データベースをシードする：
 
-## Code of Conduct
+```bash
+php artisan migrate --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+このコマンドは必要なテーブルを作成し、データベースにデフォルトのロールと権限をシードします。
 
-## Security Vulnerabilities
+6. アプリケーションを起動する：
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan serve
+```
 
-## License
+これで、アプリケーションが `http://localhost:8000` で稼働しているはずです。
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ロールと権限のテスト
+
+- AdminLTE テンプレートがプロジェクトに統合されており、Spatie/Laravel-Permission パッケージがロールと権限の管理を設定しています。
+- アプリケーションにアクセスするには、Web ブラウザで `http://localhost:8000` に移動します。
+- デフォルトの管理者の資格情報を使用してログインします：
+  ## Email:
+  #### 管理者：sherpa.developer@itsherpa.com
+  #### ユーザー：user.developer@itsherpa.com
+  #### アルバイト：partimer.developer@itsherpa.com
+  ## パスワード
+  #### itsherpa
+- ログイン後、ロールと権限のテストを行うため、ロールと権限の管理セクションに移動できます。
+
+## カスタマイズ
+
+特定のニーズに合わせてプロジェクトを自由に変更してください。必要に応じてさらにロールや権限を追加したり、異なるデザインテンプレートを実装したりできます。
+
+## 重要な注意事項
+
+- このプロジェクトはテストと教育目的のためのものであり、追加のセキュリティと微調整なしに本番利用には適していない場合があります。
+
+## ライセンス
+
+[MIT ライセンス](LICENSE)
+
+---
+
+テストを楽しんでください！問題が発生した場合や質問がある場合は、お気軽に問題を開いたり、お問い合わせください。
