@@ -30,19 +30,25 @@ composer install
 npm install && npm run build
 ```
 
-3. `.env` ファイルを作成する：
+3. Adminlteのテンプレートをインストールする：
+
+```bash
+php artisan adminlte:install --force
+```
+
+4. `.env` ファイルを作成する：
 
 ```bash
 cp .env.example .env
 ```
 
-4. アプリケーションキーを生成する：
+5. アプリケーションキーを生成する：
 
 ```bash
 php artisan key:generate
 ```
 
-5. データベースのマイグレーションを実行し、データベースをシードする：
+6. データベースのマイグレーションを実行し、データベースをシードする：
 
 ```bash
 php artisan migrate --seed
@@ -50,7 +56,7 @@ php artisan migrate --seed
 
 このコマンドは必要なテーブルを作成し、データベースにデフォルトのロールと権限をシードします。
 
-6. アプリケーションを起動する：
+7. アプリケーションを起動する：
 
 ```bash
 php artisan serve
